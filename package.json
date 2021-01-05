@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "Ejemplo práctico de como implementar los design token utilizando la API de figma",
   "main": "index.js",
-  "dependencies": {
-    "node-fetch": "^2.6.0",
-    "style-dictionary": "^2.10.2"
-  },
   "scripts": {
     "build": "node index.js && node build.js",
+    "builds": "style-dictionary build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,5 +13,10 @@
     "figma"
   ],
   "author": "Javier Samper Arias",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "node-fetch": "^2.6.0",
+    "style-dictionary": "^2.10.2"
+  }
 }

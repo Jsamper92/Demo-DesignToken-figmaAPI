@@ -1,3 +1,4 @@
+
 const [fetch, fs, utils, environment] = [
   require("node-fetch"),
   require("fs"),
@@ -10,10 +11,12 @@ utils.printMessage("Iniciando creación archivo json de los design token");
 const jsonStyleDictionary = {
   Colors: {},
   Typography: {},
-  Grids: {}
+  Grid: {}
 };
 
-(async () => {
+const file = 'config.json';
+
+async function generateJson() {
   let fileFigma = await fetch(
     "https://api.figma.com/v1/files/" + environment.dev.figmaId,
     {
@@ -40,7 +43,7 @@ const jsonStyleDictionary = {
   (() => {
     fs.rm("assets", { recursive: true, force: true }, () => true);
     const init = stylesArtboard("Icons");
-    init[0].children.map(async (icons,i) => {
+    init[0].children.map(async (icons, i) => {
       let svg = await fetch(
         `https://api.figma.com/v1/images/${environment.dev.figmaId}/?ids=${icons.children[0].id}&format=svg`,
         {
@@ -49,7 +52,7 @@ const jsonStyleDictionary = {
             "X-Figma-Token": environment.dev.apiKey
           }
         }
-      )
+      );
       await svg
         .json()
         .then(async (elem) => {
@@ -94,19 +97,19 @@ const jsonStyleDictionary = {
     grid = {
       gutter: {
         value: init[0].layoutGrids[0].gutterSize,
-        type: "Grids"
+        type: "Grid"
       },
       offset: {
         value: init[0].layoutGrids[0].offset,
-        type: "Grids"
+        type: "Grid"
       },
       columns: {
         value: init[0].layoutGrids[0].count,
-        type: "Grids"
+        type: "Grid"
       },
       width: {
         value: init[0].absoluteBoundingBox.width,
-        type: "Grids"
+        type: "Grid"
       }
     };
     return grid;
@@ -156,17 +159,24 @@ const jsonStyleDictionary = {
   };
 
   Object.assign(jsonStyleDictionary.Colors, getColors());
-  Object.assign(jsonStyleDictionary.Grids, getGrid());
+  Object.assign(jsonStyleDictionary.Grid, getGrid());
   Object.assign(jsonStyleDictionary.Typography, getFonts());
 
   utils.createFile(
     __dirname,
-    "base.json",
+    file,
     JSON.stringify(jsonStyleDictionary, null, 2)
   );
-})()
-  .catch((e) => console.error("Ha ocurrido un error", e))
+}
+
+if(environment.dev.apiKey?.length > 1 && typeof environment.dev['apiKey' && 'figmaId'] === 'string'){
+  generateJson()
+  .catch((e) => console.error("Ha ocurrido un error",e))
   .finally(() => {
-    console.log("El archivo json ha sido creado");
+    console.log(`El archivo json ha sido creado en la ruta ${__dirname}/${file}`);
     utils.printMessage("Finalizando creación archivo json de los design token");
   });
+}else {
+  console.error('Revisa por favor el archivo de configuración:');
+  console.error(JSON.stringify(environment.dev,null,2));
+}

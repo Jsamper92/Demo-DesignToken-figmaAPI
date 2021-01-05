@@ -1,13 +1,13 @@
 const StyleDictionary = require("style-dictionary").extend({
-  source: ["base.json"],
+  source: ["config.json"],
   platforms: {
     scss: {
       transformGroup: "scss",
-      buildPath: "build/web/",
+      buildPath: "dist/web/",
       files: [
         {
           destination: "_colors.scss",
-          format: "my/custom",
+          format: "scss/variables",
           filter: {
             type: "Colors"
           }
@@ -20,10 +20,10 @@ const StyleDictionary = require("style-dictionary").extend({
           }
         },
         {
-          destination: "_grids.scss",
+          destination: "_grid.scss",
           format: "scss/variables",
           filter: {
-            type: "Grids"
+            type: "Grid"
           }
         }
       ],
@@ -31,13 +31,13 @@ const StyleDictionary = require("style-dictionary").extend({
     },
     android: {
       transformGroup: "android",
-      buildPath: "build/android/",
+      buildPath: "dist/android/",
       files: [
         {
           destination: "tokens.colors.xml",
           format: "android/colors",
           filter: {
-            type: "Colors"
+            type: "Color"
           }
         }
       ],
@@ -45,7 +45,7 @@ const StyleDictionary = require("style-dictionary").extend({
     },
     ios: {
       transformGroup: "ios",
-      buildPath: `build/ios/`,
+      buildPath: `dist/ios/`,
       files: [
         {
           destination: "tokens.h",
