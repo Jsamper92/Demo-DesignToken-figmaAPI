@@ -1,0 +1,104 @@
+{
+  "Colors": {
+    "color_secondary_3": {
+      "value": "rgba(203.00000309944153, 223.00000190734863, 144.00000661611557, 1)",
+      "type": "Colors"
+    },
+    "color_secondary_2": {
+      "value": "rgba(143.00000667572021, 173.00000488758087, 136.00000709295273, 1)",
+      "type": "Colors"
+    },
+    "color_secondary_1": {
+      "value": "rgba(127.00000002980232, 156.00000590085983, 150.0000062584877, 1)",
+      "type": "Colors"
+    },
+    "color_primary_3": {
+      "value": "rgba(155.00000596046448, 193.00000369548798, 219.0000021457672, 1)",
+      "type": "Colors"
+    },
+    "color_primary_2": {
+      "value": "rgba(20.000000707805157, 131.00000739097595, 187.00000405311584, 1)",
+      "type": "Colors"
+    },
+    "color_primary_1": {
+      "value": "rgba(0, 102.00000151991844, 153.00000607967377, 1)",
+      "type": "Colors"
+    }
+  },
+  "Typography": {
+    "font_Headline_1": {
+      "family": {
+        "value": "Roboto",
+        "type": "Typography"
+      },
+      "size": {
+        "value": "28px",
+        "type": "Typography"
+      },
+      "weight": {
+        "value": 400,
+        "type": "Typography"
+      }
+    },
+    "font_Headline_2": {
+      "family": {
+        "value": "Roboto",
+        "type": "Typography"
+      },
+      "size": {
+        "value": "24px",
+        "type": "Typography"
+      },
+      "weight": {
+        "value": 400,
+        "type": "Typography"
+      }
+    },
+    "font_Headline_3": {
+      "family": {
+        "value": "Roboto",
+        "type": "Typography"
+      },
+      "size": {
+        "value": "20px",
+        "type": "Typography"
+      },
+      "weight": {
+        "value": 400,
+        "type": "Typography"
+      }
+    },
+    "font_body": {
+      "family": {
+        "value": "Roboto",
+        "type": "Typography"
+      },
+      "size": {
+        "value": "16px",
+        "type": "Typography"
+      },
+      "weight": {
+        "value": 400,
+        "type": "Typography"
+      }
+    }
+  },
+  "Grids": {
+    "gutter": {
+      "value": 10,
+      "type": "Grids"
+    },
+    "offset": {
+      "value": 50,
+      "type": "Grids"
+    },
+    "columns": {
+      "value": 12,
+      "type": "Grids"
+    },
+    "width": {
+      "value": 541,
+      "type": "Grids"
+    }
+  }
+}
