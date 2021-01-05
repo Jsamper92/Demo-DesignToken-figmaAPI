@@ -8,7 +8,7 @@
     "style-dictionary": "^2.10.2"
   },
   "scripts": {
-    "build": "node index.js",
+    "build": "node index.js && node build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

@@ -26,7 +26,8 @@ const StyleDictionary = require("style-dictionary").extend({
             type: "Grids"
           }
         }
-      ]
+      ],
+      actions: ["copy_assets"]
     },
     android: {
       transformGroup: "android",
@@ -39,7 +40,8 @@ const StyleDictionary = require("style-dictionary").extend({
             type: "Colors"
           }
         }
-      ]
+      ],
+      actions: ["copy_assets"]
     },
     ios: {
       transformGroup: "ios",
@@ -49,7 +51,8 @@ const StyleDictionary = require("style-dictionary").extend({
           destination: "tokens.h",
           format: "ios/macros"
         }
-      ]
+      ],
+      actions: ["copy_assets"]
     }
   }
 });
