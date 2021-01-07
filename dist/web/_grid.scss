@@ -1,8 +1,18 @@
-
-// Do not edit directly
-// Generated on Thu, 07 Jan 2021 00:00:08 GMT
-
-$grid-gutter: 30;
-$grid-offset: 50;
-$grid-columns: 12;
-$grid-width: 1440;
+$breakpoints: (
+            lg:(
+        gutter:30px,
+        offset:50px,
+        columns:12,
+        width:1440px
+      ),md:(
+        gutter:30px,
+        offset:50px,
+        columns:6,
+        width:768px
+      ),sm:(
+        gutter:30px,
+        offset:50px,
+        columns:4,
+        width:768px
+      ),
+        )

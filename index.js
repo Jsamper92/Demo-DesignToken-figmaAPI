@@ -12,7 +12,7 @@ utils.printMessage("Iniciando creación archivo json de los design token");
 const jsonStyleDictionary = {
   Colors: {},
   Typography: {},
-  Grid: {}
+  Breakpoints: {}
 };
 
 const file = 'config.json';
@@ -95,26 +95,34 @@ async function generateJson() {
   };
   const getGrid = () => {
     const init = stylesArtboard("Grid");
-    let grid = {};
-    grid = {
-      gutter: {
-        value: init[0].layoutGrids[0].gutterSize,
-        type: "Grid"
-      },
-      offset: {
-        value: init[0].layoutGrids[0].offset,
-        type: "Grid"
-      },
-      columns: {
-        value: init[0].layoutGrids[0].count,
-        type: "Grid"
-      },
-      width: {
-        value: init[0].absoluteBoundingBox.width,
-        type: "Grid"
+    let breakpoints = {};
+    init[0].children.map(layout => {
+      grid = {
+        [layout.name]:{
+          gutter: {
+            value: `${layout.layoutGrids[0].gutterSize}px`,
+            type: "Grid"
+          },
+          offset: {
+            value: `${layout.layoutGrids[0].offset}px`,
+            type: "Grid"
+          },
+          columns: {
+            value: layout.layoutGrids[0].count,
+            type: "Grid"
+          },
+          width: {
+            value: `${layout.absoluteBoundingBox.width}px`,
+            type: "Grid"
+          }
+        }
       }
-    };
-    return grid;
+
+      Object.assign(breakpoints, grid);
+
+    })
+
+    return breakpoints;
   };
   const getFonts = () => {
     const init = stylesArtboard("Typography");
@@ -161,7 +169,7 @@ async function generateJson() {
   };
 
   Object.assign(jsonStyleDictionary.Colors, getColors());
-  Object.assign(jsonStyleDictionary.Grid, getGrid());
+  Object.assign(jsonStyleDictionary.Breakpoints, getGrid());
   Object.assign(jsonStyleDictionary.Typography, getFonts());
 
   utils.createFile(

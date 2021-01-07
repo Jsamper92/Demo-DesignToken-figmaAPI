@@ -21,7 +21,7 @@ const StyleDictionary = require("style-dictionary").extend({
         },
         {
           destination: "_grid.scss",
-          format: "scss/variables",
+          format: "custom/breakpoints",
           filter: {
             type: "Grid"
           }
@@ -70,6 +70,33 @@ StyleDictionary.registerFormat({
     }
 
     return `$${type}: (
+            ${result}
+        )`;
+  }
+});
+
+StyleDictionary.registerFormat({
+  name: "custom/breakpoints",
+  formatter: (dictionary) => {
+    let result = [];
+    for (const key in dictionary.properties.Breakpoints) {
+      let value = dictionary.properties.Breakpoints[key];
+      layout = value.gutter.attributes.type;
+      const [gutter, offset, columns, width] = [
+        value.gutter,
+        value.offset,
+        value.columns,
+        value.width
+      ];
+      result += `${layout}:(
+        ${gutter.path[2]}:${gutter.value},
+        ${offset.path[2]}:${offset.value},
+        ${columns.path[2]}:${columns.value},
+        ${width.path[2]}:${width.value}
+      ),`;
+    }
+
+    return `$breakpoints: (
             ${result}
         )`;
   }

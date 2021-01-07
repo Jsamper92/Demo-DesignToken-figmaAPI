@@ -83,22 +83,60 @@
       }
     }
   },
-  "Grid": {
-    "gutter": {
-      "value": 30,
-      "type": "Grid"
+  "Breakpoints": {
+    "lg": {
+      "gutter": {
+        "value": "30px",
+        "type": "Grid"
+      },
+      "offset": {
+        "value": "50px",
+        "type": "Grid"
+      },
+      "columns": {
+        "value": 12,
+        "type": "Grid"
+      },
+      "width": {
+        "value": "1440px",
+        "type": "Grid"
+      }
     },
-    "offset": {
-      "value": 50,
-      "type": "Grid"
+    "md": {
+      "gutter": {
+        "value": "30px",
+        "type": "Grid"
+      },
+      "offset": {
+        "value": "50px",
+        "type": "Grid"
+      },
+      "columns": {
+        "value": 6,
+        "type": "Grid"
+      },
+      "width": {
+        "value": "768px",
+        "type": "Grid"
+      }
     },
-    "columns": {
-      "value": 12,
-      "type": "Grid"
-    },
-    "width": {
-      "value": 1440,
-      "type": "Grid"
+    "sm": {
+      "gutter": {
+        "value": "30px",
+        "type": "Grid"
+      },
+      "offset": {
+        "value": "50px",
+        "type": "Grid"
+      },
+      "columns": {
+        "value": 4,
+        "type": "Grid"
+      },
+      "width": {
+        "value": "768px",
+        "type": "Grid"
+      }
     }
   }
 }
