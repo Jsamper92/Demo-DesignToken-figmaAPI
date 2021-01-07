@@ -1,6 +1,6 @@
 {
-  "name": "demo-style-dictionary",
-  "version": "1.0.4",
+  "name": "design-token-figma",
+  "version": "1.0.5",
   "description": "Ejemplo práctico de como implementar los design token utilizando la API de figma",
   "main": "index.js",
   "scripts": {
