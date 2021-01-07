@@ -96,7 +96,7 @@ async function generateJson() {
   const getGrid = () => {
     const init = stylesArtboard("Grid");
     let breakpoints = {};
-    init[0].children.map(layout => {
+    init[0].children.reverse().map(layout => {
       grid = {
         [layout.name]:{
           gutter: {

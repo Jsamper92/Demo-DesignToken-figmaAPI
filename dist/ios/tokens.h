@@ -3,7 +3,7 @@
 // tokens.h
 //
 // Do not edit directly
-// Generated on Thu, 07 Jan 2021 14:41:42 GMT
+// Generated on Thu, 07 Jan 2021 15:08:56 GMT
 //
 
 #import <Foundation/Foundation.h>
@@ -29,16 +29,16 @@
 #define TypographyFontBodyFamily Roboto
 #define TypographyFontBodySize 16px
 #define TypographyFontBodyWeight 400
-#define BreakpointsLgGutter 30px
-#define BreakpointsLgOffset 50px
-#define BreakpointsLgColumns 12
-#define BreakpointsLgWidth 1440px
-#define BreakpointsMdGutter 30px
-#define BreakpointsMdOffset 50px
-#define BreakpointsMdColumns 6
-#define BreakpointsMdWidth 768px
 #define BreakpointsSmGutter 30px
 #define BreakpointsSmOffset 50px
 #define BreakpointsSmColumns 4
 #define BreakpointsSmWidth 768px
+#define BreakpointsMdGutter 30px
+#define BreakpointsMdOffset 50px
+#define BreakpointsMdColumns 6
+#define BreakpointsMdWidth 768px
+#define BreakpointsLgGutter 30px
+#define BreakpointsLgOffset 50px
+#define BreakpointsLgColumns 12
+#define BreakpointsLgWidth 1440px
 

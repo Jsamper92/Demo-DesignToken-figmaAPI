@@ -84,7 +84,7 @@
     }
   },
   "Breakpoints": {
-    "lg": {
+    "sm": {
       "gutter": {
         "value": "30px",
         "type": "Grid"
@@ -94,11 +94,11 @@
         "type": "Grid"
       },
       "columns": {
-        "value": 12,
+        "value": 4,
         "type": "Grid"
       },
       "width": {
-        "value": "1440px",
+        "value": "768px",
         "type": "Grid"
       }
     },
@@ -120,7 +120,7 @@
         "type": "Grid"
       }
     },
-    "sm": {
+    "lg": {
       "gutter": {
         "value": "30px",
         "type": "Grid"
@@ -130,11 +130,11 @@
         "type": "Grid"
       },
       "columns": {
-        "value": 4,
+        "value": 12,
         "type": "Grid"
       },
       "width": {
-        "value": "768px",
+        "value": "1440px",
         "type": "Grid"
       }
     }
