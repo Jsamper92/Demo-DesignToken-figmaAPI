@@ -4,8 +4,8 @@
   "description": "Ejemplo práctico de como implementar los design token utilizando la API de figma",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js && node build.js",
-    "builds": "style-dictionary build",
+    "build": "node index.js && npm run build:font-icon && node build.js",
+    "build:font-icon": "icon-font-generator --css=false --html=false --json=false  assets/icons/*.svg -o assets/fonts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,7 +16,9 @@
   "license": "ISC",
   "devDependencies": {
     "cpx": "^1.5.0",
+    "icon-font-generator": "^2.1.11",
     "node-fetch": "^2.6.0",
+    "shelljs": "^0.8.4",
     "style-dictionary": "^2.10.2"
   }
 }

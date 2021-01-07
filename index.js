@@ -1,9 +1,10 @@
 
-const [fetch, fs, utils, environment] = [
+const [fetch, fs, utils, environment, shell] = [
   require("node-fetch"),
   require("fs"),
   require("./utils"),
-  require("./environment")
+  require("./environment"),
+  require('shelljs')
 ];
 
 utils.printMessage("Iniciando creación archivo json de los design token");
@@ -41,7 +42,8 @@ async function generateJson() {
     });
 
   (() => {
-    fs.rm("assets", { recursive: true, force: true }, () => true);
+    fs.mkdirSync('assets',{recursive: true}, ()=> true);
+    fs.rm("assets/icons/", { recursive: true, force: true }, () => true);
     const init = stylesArtboard("Icons");
     init[0].children.map(async (icons, i) => {
       let svg = await fetch(
@@ -59,12 +61,12 @@ async function generateJson() {
           let icon = await fetch(Object.values(elem.images)).then((elem) =>
             elem.text()
           );
-          utils.createFile("assets", `${icons.name}.svg`, icon);
+          utils.createFile("assets/icons", `${icons.name}.svg`, icon);
         })
         .catch((e) => console.error("Ha ocurrido el siguiente error", e))
         .finally(() =>
           console.log(
-            `Importado svg ${icons.name} en la ruta ${__dirname}/assets/${icons.name}`
+            `Importado svg ${icons.name} en la ruta ${__dirname}/assets/icons/${icons.name}`
           )
         );
     });
