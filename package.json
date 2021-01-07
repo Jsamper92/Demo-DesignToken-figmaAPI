@@ -1,12 +1,12 @@
 {
   "name": "design-token-figma",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ejemplo práctico de como implementar los design token utilizando la API de figma",
   "main": "index.js",
   "scripts": {
     "build": "node index.js && npm run build:font-icon && node build.js",
     "build:font-icon": "icon-font-generator --css=false --html=false --json=false  assets/icons/*.svg -o assets/fonts",
-    "pre-publish":"npm version patch  && cpx 'package.json' 'dist/' && cpx 'README.md' 'dist/' && cd dist",
+    "pre-publish": "npm version patch  && cpx 'package.json' 'dist/' && cpx 'README.md' 'dist/' && cd dist",
     "push": "npm run pre-publish && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
