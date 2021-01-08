@@ -1,10 +1,9 @@
 
-const [fetch, fs, utils, environment, shell] = [
+const [fetch, fs, utils, environment] = [
   require("node-fetch"),
   require("fs"),
   require("./utils"),
-  require("./environment"),
-  require('shelljs')
+  require("./environment")
 ];
 
 utils.printMessage("Iniciando creación archivo json de los design token");
@@ -30,7 +29,7 @@ async function generateJson() {
 
   let figmaTreeStructure = await fileFigma.json();
 
-  const stylesArtboard = (filter) =>
+  const getFrame = (filter) =>
     figmaTreeStructure.document.children.map((item) => {
       let styles = {};
       item.children.filter((item) => {
@@ -42,9 +41,9 @@ async function generateJson() {
     });
 
   (() => {
-    fs.mkdirSync('assets',{recursive: true}, ()=> true);
+    fs.mkdirSync('assets/fonts/icomoon',{recursive: true}, ()=> true);
     fs.rm("assets/icons/", { recursive: true, force: true }, () => true);
-    const init = stylesArtboard("Icons");
+    const init = getFrame("Icons");
     init[0].children.map(async (icons, i) => {
       let svg = await fetch(
         `https://api.figma.com/v1/images/${environment.dev.figmaId}/?ids=${icons.children[0].id}&format=svg`,
@@ -73,7 +72,7 @@ async function generateJson() {
   })();
 
   const getColors = () => {
-    const init = stylesArtboard("Colors");
+    const init = getFrame("Colors");
     let colors = {};
     init[0].children.map((item) => {
       item.children.map((elem) => {
@@ -94,7 +93,7 @@ async function generateJson() {
     return colors;
   };
   const getGrid = () => {
-    const init = stylesArtboard("Grid");
+    const init = getFrame("Grid");
     let breakpoints = {};
     init[0].children.reverse().map(layout => {
       grid = {
@@ -125,7 +124,7 @@ async function generateJson() {
     return breakpoints;
   };
   const getFonts = () => {
-    const init = stylesArtboard("Typography");
+    const init = getFrame("Typography");
     const textStyles = () => {
       let text = [];
       for (const key in figmaTreeStructure.styles) {
