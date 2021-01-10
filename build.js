@@ -9,21 +9,21 @@ const StyleDictionary = require("style-dictionary").extend({
           destination: "_colors.scss",
           format: "scss/variables",
           filter: {
-            type: "Colors"
+            type: "color"
           }
         },
         {
           destination: "_typography.scss",
           format: "scss/variables",
           filter: {
-            type: "Typography"
+            type: "typography"
           }
         },
         {
           destination: "_grid.scss",
           format: "custom/breakpoints",
           filter: {
-            type: "Grid"
+            type: "grid"
           }
         }
       ],
@@ -35,10 +35,7 @@ const StyleDictionary = require("style-dictionary").extend({
       files: [
         {
           destination: "tokens.colors.xml",
-          format: "android/colors",
-          filter: {
-            type: "Color"
-          }
+          format: "android/colors"
         }
       ],
       actions: ["copy_assets"]
@@ -79,8 +76,9 @@ StyleDictionary.registerFormat({
   name: "custom/breakpoints",
   formatter: (dictionary) => {
     let result = [];
-    for (const key in dictionary.properties.Breakpoints) {
-      let value = dictionary.properties.Breakpoints[key];
+    console.log(dictionary.properties)
+    for (const key in dictionary.properties.breakpoints) {
+      let value = dictionary.properties.breakpoints[key];
       layout = value.gutter.attributes.type;
       const [gutter, offset, columns, width] = [
         value.gutter,

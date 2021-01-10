@@ -9,10 +9,16 @@ const [fetch, fs, utils, environment] = [
 utils.printMessage("Iniciando creación archivo json de los design token");
 
 const jsonStyleDictionary = {
-  Colors: {},
-  Typography: {},
-  Breakpoints: {}
+  color: {},
+  typography: {},
+  breakpoints: {}
 };
+
+const tokensType = {
+  color: 'color',
+  grid: 'grid',
+  typography: 'typography',
+}
 
 const file = 'config.json';
 
@@ -83,7 +89,7 @@ async function generateJson() {
               value: `rgba(${rbaObj("r")}, ${rbaObj("g")}, ${rbaObj("b")}, ${
                 elem.fills[0].color["a"]
               })`,
-              type: "Colors"
+              type: tokensType.color
             }
           };
           Object.assign(colors, color);
@@ -100,19 +106,19 @@ async function generateJson() {
         [layout.name]:{
           gutter: {
             value: `${layout.layoutGrids[0].gutterSize}px`,
-            type: "Grid"
+            type: tokensType.grid
           },
           offset: {
             value: `${layout.layoutGrids[0].offset}px`,
-            type: "Grid"
+            type: tokensType.grid
           },
           columns: {
             value: layout.layoutGrids[0].count,
-            type: "Grid"
+            type: tokensType.grid
           },
           width: {
             value: `${layout.absoluteBoundingBox.width}px`,
-            type: "Grid"
+            type: tokensType.grid
           }
         }
       }
@@ -148,15 +154,15 @@ async function generateJson() {
             [text.name]: {
               family: {
                 value: text.style.fontFamily,
-                type: "Typography"
+                type: tokensType.typography
               },
               size: {
                 value: `${text.style.fontSize}px`,
-                type: "Typography"
+                type: tokensType.typography
               },
               weight: {
                 value: text.style.fontWeight,
-                type: "Typography"
+                type: tokensType.typography
               }
             }
           };
@@ -167,9 +173,9 @@ async function generateJson() {
     return fontStyles;
   };
 
-  Object.assign(jsonStyleDictionary.Colors, getColors());
-  Object.assign(jsonStyleDictionary.Breakpoints, getGrid());
-  Object.assign(jsonStyleDictionary.Typography, getFonts());
+  Object.assign(jsonStyleDictionary.color, getColors());
+  Object.assign(jsonStyleDictionary.breakpoints, getGrid());
+  Object.assign(jsonStyleDictionary.typography, getFonts());
 
   utils.createFile(
     __dirname,
